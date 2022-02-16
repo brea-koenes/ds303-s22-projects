@@ -39,7 +39,7 @@ status_data <- joined_results %>%
 ## Dataset context
 The dataset came from (http://ergast.com/mrd/db/#csv). The data was compiled by Ergast Developer API, who provides a historical record of motor racing data for non-commercial purposes. The data is free for me to use. Additionally, the data is raw and has not undergone manipulation.
 
-I used 3 csv files from the raw datasets. Each row represents an entry. There are `r nrow(races)` rows in "races," `r nrow(status)` rows in status, and `r nrow(results)` rows in results. The data is diverse, but mainly numeric, regressional data. Specifically, the data that I use is the status (categorical), sum of statuses (continuous), and years (continuous).
+I used 3 csv files from the raw datasets. Each row represents an entry. There are `r nrow(races)` rows in "races," `r nrow(status)` rows in status, and `r nrow(results)` rows in results. The data that I use is the status, sum of statuses, and years. The statuses I look at are if the driver finished, had a mechanical failure, or an on-road accident.
 
 ## Visualization
 ```{r Visual}
@@ -70,5 +70,8 @@ fig
 ```
 
 ## Reflection
+What ideas/suggestions from Claus Wilke’s helped shape your visualization? Claus' ideas about labeling axis/legends helped me choose to put my labels next to my lines instead of having an answer key. Also, Claus' direction on when to use color helped my decision on color as well. I chose not to distinguish the lines with different colors because the lines are already distinguishable and labeled; color would not be giving us any new information. I still kept the blue color of the lines in order for to bring attention to them and have them stand out when looking at the plot. 
 
+Is there anything more you wish you could do with this data? I think that it would be interesting to see what lap of the race has the most accidents/mechanical failures. 
 
+What were the most interesting or frustrating technical aspects of doing this? A key was not generated when I made the line plot. I thought it was odd that no labels for the lines were generated either. I had to do it manually.
