@@ -5,7 +5,7 @@ date: "2/16/2022"
 title: "Plotly Graphics"
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(dplyr)
@@ -13,18 +13,18 @@ require(plotly)
 ```
 
 ## Prepare Data
-```{r load-data}
+```{r load-data, echo=FALSE}
 races <- read_csv("data/races.csv")
 status <- read_csv("data/status.csv")
 results <- read_csv("data/results.csv", col_types = cols(number = col_character()))
 ```
 
-```{r join datasets}
+```{r join datasets, echo=FALSE}
 joined_results <- left_join(status, results, by='statusId') %>%
                 left_join(races, results, by='raceId')
 ```
 
-```{r Wrangling}
+```{r Wrangling, echo=FALSE}
 status_data <- joined_results %>%
   mutate(status = if_else((status == "Accident") |
                           (status == "Mechanical"),
@@ -42,7 +42,7 @@ The dataset came from (http://ergast.com/mrd/db/#csv). The data was compiled by 
 I used 3 csv files from the raw datasets. Each row represents an entry. There are `r nrow(races)` rows in "races," `r nrow(status)` rows in status, and `r nrow(results)` rows in results. The data that I use is the status, sum of statuses, and years. The statuses I look at are if the driver finished, had a mechanical failure, or an on-road accident.
 
 ## Visualization
-```{r Visual}
+```{r Visual, echo=FALSE}
 fig <- plot_ly(status_data, 
                x = ~year, 
                y = ~status_sum, 
