@@ -40,7 +40,7 @@ The dataset came from (http://ergast.com/mrd/db/#csv). The data was compiled by 
 
 I loaded in 3 csv files with the raw datasets. Each row represents an entry. There are `r nrow(races)` rows in "races," `r nrow(status)` rows in status, and `r nrow(results)` rows in results. The data that I use is the status, sum of statuses, and years. The statuses I look at are if the driver finished, had a mechanical failure, or an on-road accident.
 
-## Visualization
+## Visualization 
 ```{r Visual, echo=FALSE}
 fig <- plot_ly(status_data, 
                x = ~year, 
