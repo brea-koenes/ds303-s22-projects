@@ -12,7 +12,6 @@ library(dplyr)
 require(plotly)
 ```
 
-## Prepare Data
 ```{r load-data, echo=FALSE}
 races <- read_csv("data/races.csv")
 status <- read_csv("data/status.csv")
@@ -37,9 +36,9 @@ status_data <- joined_results %>%
 ```
 
 ## Dataset context
-The dataset came from (http://ergast.com/mrd/db/#csv). The data was compiled by Ergast Developer API, who provides a historical record of motor racing data for non-commercial purposes. The data is free for me to use. Additionally, the data is raw and has not undergone manipulation.
+The dataset came from (http://ergast.com/mrd/db/#csv). The data was compiled by Ergast Developer API, who provides a historical record of motor racing data for non-commercial purposes.
 
-I used 3 csv files from the raw datasets. Each row represents an entry. There are `r nrow(races)` rows in "races," `r nrow(status)` rows in status, and `r nrow(results)` rows in results. The data that I use is the status, sum of statuses, and years. The statuses I look at are if the driver finished, had a mechanical failure, or an on-road accident.
+I loaded in 3 csv files with the raw datasets. Each row represents an entry. There are `r nrow(races)` rows in "races," `r nrow(status)` rows in status, and `r nrow(results)` rows in results. The data that I use is the status, sum of statuses, and years. The statuses I look at are if the driver finished, had a mechanical failure, or an on-road accident.
 
 ## Visualization
 ```{r Visual, echo=FALSE}
@@ -47,19 +46,19 @@ fig <- plot_ly(status_data,
                x = ~year, 
                y = ~status_sum, 
                type = 'scatter', 
-               mode = 'lines'
+               mode = 'lines+markers'
                ) %>% 
   add_annotations(
   xref="paper",
   yref="paper",
-  x=.89,
-  y=0.13,
+  x=.83,
+  y=0.15,
   text="Accidents/Mechanical Failures"
   ) %>%
   add_annotations(
   xref="paper",
   yref="paper",
-  x=0.98,
+  x=0.93,
   y=0.73,
   text="Finished"
   ) %>% 
@@ -70,7 +69,7 @@ fig
 ```
 
 ## Reflection
-What ideas/suggestions from Claus Wilke’s helped shape your visualization? Claus' ideas about labeling axis/legends helped me choose to put my labels next to my lines instead of having an answer key. Also, Claus' direction on when to use color helped my decision on color as well. I chose not to distinguish the lines with different colors because the lines are already distinguishable and labeled; color would not be giving us any new information. I still kept the blue color of the lines in order for to bring attention to them and have them stand out when looking at the plot. 
+What ideas/suggestions from Claus Wilke’s helped shape your visualization? Claus' ideas about labeling axis/legends helped me choose to put my labels next to my lines instead of having an answer key. Also, Claus' direction on when to use color helped my decisions with color. I chose not to distinguish the lines with different colors because the lines are already labeled; color would not be giving us any new information. I kept the blue color of the lines in order for them stand out when looking at the plot. 
 
 Is there anything more you wish you could do with this data? I think that it would be interesting to see what lap of the race has the most accidents/mechanical failures. 
 
