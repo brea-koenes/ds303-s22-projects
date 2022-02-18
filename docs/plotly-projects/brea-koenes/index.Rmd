@@ -12,18 +12,18 @@ library(dplyr)
 require(plotly)
 ```
 
-```{r load-data, echo=FALSE}
+```{r load-data, include=FALSE}
 races <- read_csv("data/races.csv")
 status <- read_csv("data/status.csv")
 results <- read_csv("data/results.csv", col_types = cols(number = col_character()))
 ```
 
-```{r join datasets, echo=FALSE}
+```{r join datasets, include=FALSE}
 joined_results <- left_join(status, results, by='statusId') %>%
                 left_join(races, results, by='raceId')
 ```
 
-```{r Wrangling, echo=FALSE}
+```{r Wrangling, include=FALSE}
 status_data <- joined_results %>%
   mutate(status = if_else((status == "Accident") |
                           (status == "Mechanical"),
