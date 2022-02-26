@@ -1,0 +1,39 @@
+---
+title: "round"
+author: "Brea Koenes"
+date: "2/25/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(mosaic)
+require(dplyr)
+```
+
+```{r}
+n <- 7L
+dataframe <- 
+  tibble(double = rnorm(n,100,10),
+         x=123400 / 10^(1L:10),
+         integer = (1L:n) * (1L:n),
+         character = LETTERS[1L:n],
+         factor = factor(letters[1L:n]),
+         logical = rep(c(TRUE, FALSE), length.out = n))
+```
+
+```{r this time im really gonna do it}
+round <-
+  function(dataframe, digits) {
+    for (i in 1:ncol(i)) {
+      if (ncol == double | integer) {
+        round(i, digits = digits)
+        } else {
+          break
+        }
+    }
+    dataframe
+  }
+```
+
